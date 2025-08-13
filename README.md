@@ -36,6 +36,12 @@ python flag.py "Your Name"
 curl -s https://gist.githubusercontent.com/mskian/da865d836565c617973a33a42ce189e8/raw/flag.py?nocache=$(date +%s) | python3 - "Your Name"
 ```
 
+- Web View
+
+```sh
+python index.py
+```
+
 ## Termux Support
 
 Fix image File Opening issue
