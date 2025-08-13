@@ -2,6 +2,8 @@
 
 Python CLI to Create Indian Flag with Your Name 🇮🇳  
 
+![Python Indian Flag](https://raw.githubusercontent.com/mskian/python-indian-flag/refs/heads/main/indian_flag.png "Python CLI to Create Indian Flag with Your Name 🇮🇳")  
+
 ## Installation and usage
 
 - Download CLI
