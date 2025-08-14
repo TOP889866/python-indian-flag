@@ -75,8 +75,8 @@ HTML_FORM = """
 <link href="https://fonts.googleapis.com/css2?family=Mozilla+Text:wght@200..700&display=swap" rel="stylesheet" nonce="{{nonce}}">
 <style nonce="{{nonce}}">
     body {
-        background: #0d0d0d;
-        color: #e0e0e0;
+        background: #ffe4e9;
+        color: #333;
         font-family: "Mozilla Text", sans-serif;
         font-weight: 600;
         display: flex;
@@ -86,16 +86,16 @@ HTML_FORM = """
         margin: 0;
     }
     h1 {
-        color: #ffb300;
+        color: #c2185b;
         text-align: center;
         font-family: "Mozilla Text", sans-serif;
         font-size: clamp(1.5rem, 5vw, 2.2rem);
     }
     .container {
-        background: #1e1e1e;
+        background: #fff0f5;
         padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.6);
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(194, 24, 91, 0.15);
         max-width: 500px;
         width: 100%;
         box-sizing: border-box;
@@ -105,12 +105,17 @@ HTML_FORM = """
         padding: 12px;
         font-family: "Mozilla Text", sans-serif;
         font-size: 16px;
-        background: #2c2c2c;
-        border: none;
+        background: #ffeef3;
+        border: 1px solid #f8cdd7;
         border-radius: 6px;
-        color: #e0e0e0;
+        color: #333;
         margin-bottom: 12px;
         box-sizing: border-box;
+    }
+    input:focus {
+        outline: none;
+        border-color: #f48fb1;
+        box-shadow: 0 0 0 2px rgba(244, 143, 177, 0.3);
     }
     button {
         padding: 12px;
@@ -122,22 +127,22 @@ HTML_FORM = """
         font-weight: bold;
         width: 100%;
         margin-bottom: 10px;
+        transition: opacity 0.2s ease-in-out;
     }
     .primary {
-        background: linear-gradient(90deg, #ff5722, #ff9800);
-        font-family: "Mozilla Text", sans-serif;
+        background: linear-gradient(90deg, #f06292, #ec407a);
         color: white;
     }
     .primary:hover { opacity: 0.9; }
     .success {
-        background: linear-gradient(90deg, #4caf50, #2e7d32);
+        background: linear-gradient(90deg, #81c784, #4caf50);
         color: white;
         display: none;
     }
     .terminal {
-        background: #000;
-        color: #00ff41;
-        font-family: "Mozilla Text", sans-serif;
+        background: #fff5f8;
+        color: #ad1457;
+        font-family: monospace;
         padding: 10px;
         height: 200px;
         overflow-y: auto;
@@ -145,6 +150,13 @@ HTML_FORM = """
         font-size: 14px;
         margin-top: 10px;
         white-space: pre-wrap;
+        border: 1px solid #f8cdd7;
+        box-shadow: inset 0 0 8px rgba(0,0,0,0.05);
+    }
+    .terminal div::before {
+        content: "$ ";
+        color: #ec407a;
+        font-weight: bold;
     }
     img {
         max-width: 100%;
@@ -161,7 +173,7 @@ HTML_FORM = """
     <input type="text" id="name" placeholder="Enter Your Name" maxlength="30">
     <button id="generateBtn" class="primary">Generate Flag</button>
     <button id="downloadBtn" class="success">Download Flag</button>
-    <div class="terminal" id="terminal">$ ./flames.py "your name"\n</div>
+    <div class="terminal" id="terminal">$ ./flag.py "your name"\n</div>
     <img id="flagImage" alt="Generated Flag">
 </div>
 
@@ -180,7 +192,7 @@ function log(msg){
 
 function generateFlag() {
     const name = document.getElementById("name").value.trim();
-    term.textContent = `$ ./flames.py "${name || 'your name'}"\n`;
+    term.textContent = `$ ./flag.py "${name || 'your name'}"\n`;
 
     if (!name) {
         log("❌ Please enter a name.");
